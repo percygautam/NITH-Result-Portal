@@ -33,7 +33,7 @@ Step 2: Selenium requires a driver to interface with the chosen browser.
 > For [Click for FireFox](https://github.com/mozilla/geckodriver/releases)
 > For [Click for safari](https://webkit.org/blog/6900/webdriver-support-in-safari-10)
 
-Step 3: Extract the downloaded driver onto a project folder and enter the path to driver in dataextractor.py file.
+Step 3: Extract the downloaded driver onto a project folder and enter the path to driver in dataextractor.py file (only for creating database)
 
 Step 4: Set path variable to the environment. Paste this command to the terminal
 ```sh
@@ -43,11 +43,6 @@ Step 5: run details.py using Python3
 ```sh
 $ python3 details.py
 ```
-Step 6: Enter the name of the group and the participants you want to add in that group, then press Submit
-
-Step 7: When the browser is opened web.whatsapp.com will be opened and will ask to scan a QR code when you it first time
-
-Step 8: After Scanning the QR code, you will be asked to press Enter Key in the terminal.
 
 ### Note
 
