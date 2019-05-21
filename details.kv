@@ -1,0 +1,122 @@
+ 
+# Reference details.py
+#: import main details
+#: import ListAdapter kivy.adapters.listadapter.ListAdapter
+#: import ListItemButton kivy.uix.listview.ListItemButton
+#: import CheckBox kivy.uix.checkbox
+<CustLabel@Label>:
+    color: 1, 1, 1, 1
+
+Details:
+ 
+<Details>:
+    orientation: "vertical"
+    second_roll_no_text_input: second_roll_no
+    roll_no_text_input: roll_no
+    group_list: group_list_view
+    
+
+    padding: 10
+    spacing: 10
+    
+    BoxLayout:
+        size_hint_y: None
+        height: "40dp"
+ 
+        CustLabel:
+            text: "Roll no.."
+        TextInput:
+            id: roll_no
+            focus : True
+            multiline: False
+            on_text_validate: second_roll_no.focus = True
+        
+    BoxLayout:
+        size_hint_y: None
+        height: "40dp"
+ 
+        CustLabel:
+            text: "Compare to : "
+        TextInput:
+            id: second_roll_no
+            focus : True
+            multiline: False
+            on_text_validate: enter.trigger_action(duration=0.1)
+            
+                                 
+    
+                
+
+            
+    
+    BoxLayout:
+        orientation: "horizontal"
+        height: "40dp"
+ 
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_x: .22
+            CustLabel:
+                text: "SGPI"
+                size_hint_x: .80
+            CheckBox:
+                group:"plot_type"
+                value:True
+                on_active: root.sgpi_clicked(self, self.active)
+                canvas.before:
+                                       
+                    Color:
+                        rgb: 1,1,1
+                    Ellipse:
+                        pos: self.center_x-7, self.center_y-7
+                        size:[13,13]
+                    
+            CustLabel:
+                text: "CGPI"
+                size_hint_x: .80
+            CheckBox:
+                group:"plot_type"
+                on_active: root.cgpi_clicked(self, self.active)
+                canvas.before:
+                    Color:
+                        rgb: 1,0,0
+                    
+                    Color:
+                        rgb: 1,1,1
+                    Ellipse:
+                        pos: self.center_x-7, self.center_y-7
+                        size:[13,13]
+                
+        
+
+    BoxLayout:
+        size_hint_y: None
+        height: "40dp"
+        Button:
+            id: enter
+            text: "Compare/Get Result"
+            size_hint_x: 15
+            on_press: root.submit_member()
+            on_release: second_roll_no.focus=True
+
+        Button:
+            text: "Compare  to new"
+            size_hint_x: 15
+            on_press: root.delete_member()
+            on_release: second_roll_no.focus=True
+
+    BoxLayout:
+        size_hint_y: None
+        height: "40dp"
+        Button:
+            text: "Exit"
+            size_hint_x: 15
+            on_press: root.Exit_app()   
+
+    # Define starting data and point to the ListItemButton
+    # in the Python code
+    ListView:
+        id: group_list_view
+        adapter:
+            ListAdapter(data=[], cls=main.ListButton)
+    
